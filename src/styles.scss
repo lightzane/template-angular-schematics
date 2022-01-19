@@ -28,6 +28,12 @@ $angular-schematics-theme: mat.define-dark-theme((
   )
 ));
 
+:root {
+  --color-primary: #{mat.get-color-from-palette($angular-schematics-primary, 500)};
+  --color-accent: #{mat.get-color-from-palette($angular-schematics-accent, 500)};
+  --color-accent-text: #{mat.get-color-from-palette($angular-schematics-accent, 500-contrast)};
+}
+
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.

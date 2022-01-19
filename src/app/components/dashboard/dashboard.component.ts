@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
-import { StateService } from '../../state.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,10 +13,10 @@ export class DashboardComponent {
     map(({ matches }) => {
       if (matches) {
         return [
-          { title: 'Card 1', cols: 1, rows: 1 },
-          { title: 'Card 2', cols: 1, rows: 1 },
-          { title: 'Card 3', cols: 1, rows: 1 },
-          { title: 'Card 4', cols: 1, rows: 1 }
+          { title: 'Card 1', cols: 2, rows: 1 },
+          { title: 'Card 2', cols: 2, rows: 1 },
+          { title: 'Card 3', cols: 2, rows: 1 },
+          { title: 'Card 4', cols: 2, rows: 1 }
         ];
       }
 
@@ -30,12 +29,5 @@ export class DashboardComponent {
     })
   );
 
-  isHandset = false;
-
-  constructor(
-    private breakpointObserver: BreakpointObserver,
-    private stateService: StateService
-  ) {
-    this.stateService.isHandset$.subscribe((breakpointState) => this.isHandset = breakpointState);
-  }
+  constructor(private breakpointObserver: BreakpointObserver) { }
 }

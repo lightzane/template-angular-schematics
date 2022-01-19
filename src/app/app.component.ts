@@ -1,6 +1,7 @@
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { StateService } from './state.service';
+import { Observable } from 'rxjs';
+import { map, shareReplay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -9,10 +10,14 @@ import { StateService } from './state.service';
 })
 export class AppComponent {
 
-  isHandset: boolean = true;
+  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
+    .pipe(
+      map((breakpointState) => breakpointState.matches),
+      shareReplay()
+    );
 
-  constructor(private stateService: StateService) {
-    this.stateService.isHandset$.subscribe((breakpointState) => this.isHandset = breakpointState);
+  constructor(private breakpointObserver: BreakpointObserver) {
+
   }
 
 }

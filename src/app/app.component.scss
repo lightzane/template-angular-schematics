@@ -14,3 +14,8 @@
     position: sticky;
     z-index: 1;
 }
+
+.active {
+    background-color: var(--color-accent) !important;
+    color: var(--color-accent-text);
+}
